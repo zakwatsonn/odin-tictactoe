@@ -1,0 +1,7 @@
+const gameBoard = (function() {
+    return [
+        ['', '', ''],
+        ['', '', ''],
+        ['', '', '']
+    ];
+})();
