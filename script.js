@@ -12,7 +12,7 @@ function gameBoard() {
     }
 
     //method that allows board to be got while keeping private variable
-    const getBoard = board;
+    const getBoard = () => board;
 
     //method that changes a cell to a cross or circle
     const changeCell = (row, col, player) => {
