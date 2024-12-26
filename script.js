@@ -16,7 +16,7 @@ function gameBoard() {
 
     //method that changes a cell to a cross or circle
     const changeCell = (row, col, player) => {
-        board[row][col] = player.getToken()
+        board[row][col] = player.getToken() //use whatever method gets the 1 or 2 from the player
     };
 };
 
