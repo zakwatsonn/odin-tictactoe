@@ -20,10 +20,15 @@ function gameBoard() {
     };
 };
 
-function player() {
+function player(playerNumber) {
+    const getToken = () => playerNumber;
 
+    return {
+        getToken
+    }
 };
 
 function gameController() {
-
+    const playerOne = player(1);
+    const playerTwo = player(2);
 };
