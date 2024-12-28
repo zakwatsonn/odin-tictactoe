@@ -16,8 +16,19 @@ function gameBoard() {
 
     //method that changes a cell to a cross or circle
     const changeCell = (row, col, player) => {
-        board[row][col] = player.getToken() //use whatever method gets the 1 or 2 from the player
+        board[row - 1][col - 1] = player.getToken() //use whatever method gets the 1 or 2 from the player
     };
+
+    //method that prints board to console
+    const printBoard = () => {
+        console.log(board);
+    }
+
+    return {
+        getBoard,
+        changeCell,
+        printBoard
+    }
 };
 
 function player(playerNumber) {
@@ -32,3 +43,6 @@ function gameController() {
     const playerOne = player(1);
     const playerTwo = player(2);
 };
+
+const adminPlayer = player(1);
+const theBoard = gameBoard();
