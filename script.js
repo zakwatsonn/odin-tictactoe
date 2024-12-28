@@ -20,10 +20,8 @@ function gameBoard() {
     };
 
     //method that prints board to console
-    const printBoard = () => {
-        console.log(board);
-    }
-
+    const printBoard = () => console.log(board);
+    
     return {
         getBoard,
         changeCell,
@@ -31,8 +29,8 @@ function gameBoard() {
     }
 };
 
-function player(playerNumber) {
-    const getToken = () => playerNumber;
+function player(playerToken) {
+    const getToken = () => playerToken;
 
     return {
         getToken
@@ -40,9 +38,33 @@ function player(playerNumber) {
 };
 
 function gameController() {
+    const board = gameBoard();
     const playerOne = player(1);
     const playerTwo = player(2);
+
+    let activePlayer = playerOne;
+
+    const switchPlayerTurn = () => {
+        activePlayer = activePlayer === playerOne ? playerTwo : playerOne;
+    }
+
+    const getActivePlayer = () => activePlayer;
+
+    const printNewRound = () => {
+        board.printBoard();
+        console.log("It's Player " + getActivePlayer().getToken() + "'s turn!");
+    }
+
+    //remove some of these return methods
+    return {
+        printNewRound,
+        getActivePlayer,
+        switchPlayerTurn
+    }
 };
 
+
+//for testing purposes
 const adminPlayer = player(1);
 const theBoard = gameBoard();
+const controller = gameController();
