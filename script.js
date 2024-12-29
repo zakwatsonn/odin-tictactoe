@@ -55,6 +55,20 @@ function gameController() {
         console.log("It's Player " + getActivePlayer().getToken() + "'s turn!");
     }
 
+    const checkWinner = () {
+        board.getBoard().forEach((row) => {
+            if (row[0] === row[1] === row[2] && row[0] !== 0) {
+                return 'Player ' + getActivePlayer().getToken() + ' Wins!'
+            };
+        });
+        for (let cols = 0; cols < 3; cols++) {
+            if (board.getBoard[0][cols] === board.getBoard[1][cols] === board.getBoard[2][cols] && board.getBoard[0][cols] !== 0) {
+                return 'Player ' + getActivePlayer().getToken() + ' Wins!'
+            }
+        }
+
+    }
+
     const playRound = (row, col) => {
         if (board.getBoard()[row][col] === 0) {
             console.log('Chosen: Row ' + row + ' and Column ' + col);
@@ -64,7 +78,7 @@ function gameController() {
             console.log('This square has already been chosen. Please choose again');
         };
         
-        //check for a winner here
+        //checks for a winner here
         
         printNewRound();
     }
