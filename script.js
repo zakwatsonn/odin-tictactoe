@@ -59,11 +59,13 @@ function gameController() {
         if (board.getBoard()[row][col] === 0) {
             console.log('Chosen: Row ' + row + ' and Column ' + col);
             board.changeCell(row, col, getActivePlayer());
-        }; //else error and choose another square
-    
+            switchPlayerTurn();
+        } else {
+            console.log('This square has already been chosen. Please choose again');
+        };
+        
         //check for a winner here
-
-        switchPlayerTurn();
+        
         printNewRound();
     }
 
