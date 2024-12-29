@@ -16,7 +16,7 @@ function gameBoard() {
 
     //method that changes a cell to a cross or circle
     const changeCell = (row, col, player) => {
-        board[row - 1][col - 1] = player.getToken() //use whatever method gets the 1 or 2 from the player
+        board[row][col] = player.getToken() //use whatever method gets the 1 or 2 from the player
     };
 
     //method that prints board to console
@@ -58,7 +58,7 @@ function gameController() {
     const playRound = (row, col) => {
         if (board.getBoard()[row][col] === 0) {
             console.log('Chosen: Row ' + row + ' and Column ' + col);
-            board.changeCell(row, col, getActivePlayer().getToken());
+            board.changeCell(row, col, getActivePlayer());
         }; //else error and choose another square
     
         //check for a winner here
@@ -69,7 +69,6 @@ function gameController() {
 
     printNewRound(); //initial game messages
 
-    //remove some of these return methods
     return {
         playRound,
         switchPlayerTurn
@@ -78,6 +77,4 @@ function gameController() {
 
 
 //for testing purposes
-const adminPlayer = player(1);
-const theBoard = gameBoard();
 const controller = gameController();
