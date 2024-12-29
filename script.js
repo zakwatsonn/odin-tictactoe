@@ -55,7 +55,7 @@ function gameController() {
         console.log("It's Player " + getActivePlayer().getToken() + "'s turn!");
     }
 
-    const checkWinner = () {
+    const checkWinner = () => {
         board.getBoard().forEach((row) => {
             if (row[0] === row[1] === row[2] && row[0] !== 0) {
                 return 'Player ' + getActivePlayer().getToken() + ' Wins!'
@@ -64,10 +64,9 @@ function gameController() {
         for (let cols = 0; cols < 3; cols++) {
             if (board.getBoard[0][cols] === board.getBoard[1][cols] === board.getBoard[2][cols] && board.getBoard[0][cols] !== 0) {
                 return 'Player ' + getActivePlayer().getToken() + ' Wins!'
-            }
-        }
-
-    }
+            };
+        };
+    };
 
     const playRound = (row, col) => {
         if (board.getBoard()[row][col] === 0) {
