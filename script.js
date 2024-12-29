@@ -55,10 +55,23 @@ function gameController() {
         console.log("It's Player " + getActivePlayer().getToken() + "'s turn!");
     }
 
+    const playRound = (row, col) => {
+        if (board.getBoard()[row][col] === 0) {
+            console.log('Chosen: Row ' + row + ' and Column ' + col);
+            board.changeCell(row, col, getActivePlayer().getToken());
+        }; //else error and choose another square
+    
+        //check for a winner here
+
+        switchPlayerTurn();
+        printNewRound();
+    }
+
+    printNewRound(); //initial game messages
+
     //remove some of these return methods
     return {
-        printNewRound,
-        getActivePlayer,
+        playRound,
         switchPlayerTurn
     }
 };
