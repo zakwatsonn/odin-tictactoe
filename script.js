@@ -35,7 +35,8 @@ function player(playerToken) {
     const isWinner = () => console.log('Player ' + playerToken + ' Wins!');
 
     return {
-        getToken
+        getToken,
+        isWinner
     }
 };
 
@@ -68,6 +69,8 @@ function gameController() {
                 getActivePlayer().isWinner();
             };
         };
+
+        //add check for diagonals
     };
 
     const playRound = (row, col) => {
