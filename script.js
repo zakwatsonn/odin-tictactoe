@@ -59,17 +59,19 @@ function gameController() {
     }
 
     const checkWinner = () => {
-        board.getBoard().forEach((row) => {
-            if (row[0] === row[1] && row[1] === row[2] && row[0] !== 0) {
-                return true;
-            };
-        });
+        //check rows
+        if (board.getBoard().some(row => row[0] === row[1] && row[1] === row[2] && row[0] !== 0)) {
+            return true;
+        }
+
+        //check cols
         for (let cols = 0; cols < 3; cols++) {
             if (board.getBoard()[0][cols] === board.getBoard()[1][cols] && board.getBoard()[1][cols] === board.getBoard()[2][cols] && board.getBoard()[0][cols] !== 0) {
                 return true;
             }
         };
 
+        //check diagonals
         if (board.getBoard()[0][0] === board.getBoard()[1][1] && board.getBoard()[1][1] === board.getBoard()[2][2] && board.getBoard()[0][0] !== 0) {
             return true;
         } else if (board.getBoard()[0][2] === board.getBoard()[1][1] && board.getBoard()[1][1] === board.getBoard()[2][0] && board.getBoard()[0][2] !== 0) {
@@ -87,7 +89,7 @@ function gameController() {
             }
 
             switchPlayerTurn();
-            
+
         } else {
             console.log('This square has already been chosen. Please choose again');
         };
