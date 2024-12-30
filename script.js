@@ -60,29 +60,37 @@ function gameController() {
 
     const checkWinner = () => {
         board.getBoard().forEach((row) => {
-            if (row[0] === row[1] === row[2] && row[0] !== 0) {
-                getActivePlayer().isWinner();
+            if (row[0] === row[1] && row[1] === row[2] && row[0] !== 0) {
+                return true;
             };
         });
         for (let cols = 0; cols < 3; cols++) {
-            if (board.getBoard()[0][cols] === board.getBoard()[1][cols] === board.getBoard()[2][cols] && board.getBoard()[0][cols] !== 0) {
-                getActivePlayer().isWinner();
-            };
+            if (board.getBoard()[0][cols] === board.getBoard()[1][cols] && board.getBoard()[1][cols] === board.getBoard()[2][cols] && board.getBoard()[0][cols] !== 0) {
+                return true;
+            }
         };
 
-        //add check for diagonals
+        if (board.getBoard()[0][0] === board.getBoard()[1][1] && board.getBoard()[1][1] === board.getBoard()[2][2] && board.getBoard()[0][0] !== 0) {
+            return true;
+        } else if (board.getBoard()[0][2] === board.getBoard()[1][1] && board.getBoard()[1][1] === board.getBoard()[2][0] && board.getBoard()[0][2] !== 0) {
+            return true;
+        };
     };
 
     const playRound = (row, col) => {
         if (board.getBoard()[row][col] === 0) {
             console.log('Chosen: Row ' + row + ' and Column ' + col);
             board.changeCell(row, col, getActivePlayer());
+            
+            if (checkWinner() === true) {
+                getActivePlayer().isWinner();
+            }
+
             switchPlayerTurn();
+            
         } else {
             console.log('This square has already been chosen. Please choose again');
         };
-        
-        checkWinner();
         
         printNewRound();
     }
@@ -95,6 +103,6 @@ function gameController() {
     }
 };
 
-
 //for testing purposes
-const controller = gameController();
+const game = gameController();
+const testplayer = player(3);
