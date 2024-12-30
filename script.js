@@ -79,13 +79,27 @@ function gameController() {
         };
     };
 
+    const resetGame = () => {
+        board.getBoard().forEach((row) => {
+            for (let i = 0; i < 3; i++) {
+            row[i] = 0;
+            }
+        })
+
+        activePlayer = playerTwo;
+    }
+
     const playRound = (row, col) => {
         if (board.getBoard()[row][col] === 0) {
             console.log('Chosen: Row ' + row + ' and Column ' + col);
             board.changeCell(row, col, getActivePlayer());
             
+            //checking for winner
             if (checkWinner() === true) {
                 getActivePlayer().isWinner();
+
+                //resets the game
+                gameController.resetGame();
             }
 
             switchPlayerTurn();
