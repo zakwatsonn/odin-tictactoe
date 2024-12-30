@@ -96,6 +96,10 @@ function gameController() {
             
             //checking for winner
             if (checkWinner() === true) {
+                //print winning board
+                board.printBoard();
+            
+                //declare winner
                 getActivePlayer().isWinner();
 
                 //resets the game
