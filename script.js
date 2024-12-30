@@ -87,7 +87,7 @@ function gameController() {
         })
 
         activePlayer = playerTwo;
-    }
+    };
 
     const playRound = (row, col) => {
         if (board.getBoard()[row][col] === 0) {
@@ -99,7 +99,7 @@ function gameController() {
                 getActivePlayer().isWinner();
 
                 //resets the game
-                gameController.resetGame();
+                resetGame();
             }
 
             switchPlayerTurn();
