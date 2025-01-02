@@ -38,8 +38,6 @@ function gameBoard() {
         getBoard,
         changeCell,
         printBoard,
-        guiCells,
-        guiRows
     }
 };
 
