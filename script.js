@@ -1,8 +1,12 @@
 function gameBoard() {
+    const guiRows = document.querySelector('.game-container').children
     const rows = 3;
     const columns = 3;
     const board = [];
 
+    //constructing 2d array with gui cells
+    const guiCells = [[guiRows[0].children], [guiRows[1].children], [guiRows[2].children]];
+    
     //creating board using nested loops
     for (let i = 0; i < rows; i++) {
         board[i] = [];
@@ -19,13 +23,23 @@ function gameBoard() {
         board[row][col] = player.getToken() //use whatever method gets the 1 or 2 from the player
     };
 
-    //method that prints board to console
-    const printBoard = () => console.log(board);
+    //method that prints board to console and to gui
+    const printBoard = () => {
+        console.log(board)
+
+        for (let i = 0; i < 3; i++) {
+            for (let j = 0; j < 3; j++) {
+                guiCells[i][0][j].textContent = board[i][j]
+            }
+        }
+    }
     
     return {
         getBoard,
         changeCell,
-        printBoard
+        printBoard,
+        guiCells,
+        guiRows
     }
 };
 
@@ -126,3 +140,4 @@ function gameController() {
 //for testing purposes
 const game = gameController();
 const testplayer = player(3);
+const board = gameBoard()
