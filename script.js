@@ -138,6 +138,8 @@ function gameController() {
 
     printNewRound(); //initial game messages
 
+    //create event listeners for the buttons
+
     return {
         playRound,
         switchPlayerTurn
