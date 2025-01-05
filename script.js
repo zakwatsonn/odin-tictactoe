@@ -56,6 +56,8 @@ function gameController() {
     const board = gameBoard();
     const playerOne = player(1);
     const playerTwo = player(2);
+    const activityBox = document.querySelector('.activity-box')
+    const turnBox = document.querySelector('.turn-box')
 
     let activePlayer = playerOne;
 
@@ -68,6 +70,7 @@ function gameController() {
     const printNewRound = () => {
         board.printBoard();
         console.log("It's Player " + getActivePlayer().getToken() + "'s turn!");
+        turnBox.textContent = "It's Player " + getActivePlayer().getToken() + "'s turn!"
     }
 
     const checkWinner = () => {
@@ -103,6 +106,9 @@ function gameController() {
 
     const playRound = (row, col) => {
         if (board.getBoard()[row][col] === 0) {
+
+            //create textbox that describes the move
+            activityBox.textContent = 'Chosen: Row ' + row + ' and Column ' + col
             console.log('Chosen: Row ' + row + ' and Column ' + col);
             board.changeCell(row, col, getActivePlayer());
             
@@ -121,6 +127,9 @@ function gameController() {
             switchPlayerTurn();
 
         } else {
+
+            //make this appear on the dom
+            activityBox.textContent = 'This square has already been chosen. Please choose again'
             console.log('This square has already been chosen. Please choose again');
         };
         
