@@ -20,7 +20,7 @@ function gameBoard() {
 
     //method that changes a cell to a cross or circle
     const changeCell = (row, col, player) => {
-        board[row][col] = player.getToken() //use whatever method gets the 1 or 2 from the player
+        board[row][col] = player.getToken()
     };
 
     //method that prints board to console and to gui
@@ -38,13 +38,17 @@ function gameBoard() {
         getBoard,
         changeCell,
         printBoard,
+        guiRows
     }
 };
 
 function player(playerToken) {
     const getToken = () => playerToken;
 
-    const isWinner = () => console.log('Player ' + playerToken + ' Wins!');
+    const isWinner = () => {
+        console.log('Player ' + playerToken + ' Wins!')
+        activityBox.textContent = 'Player ' + playerToken + ' Wins!'
+    }
 
     return {
         getToken,
@@ -138,8 +142,6 @@ function gameController() {
 
     printNewRound(); //initial game messages
 
-    //create event listeners for the buttons
-
     return {
         playRound,
         switchPlayerTurn
@@ -148,5 +150,3 @@ function gameController() {
 
 //for testing purposes
 const game = gameController();
-const testplayer = player(3);
-const board = gameBoard()
