@@ -38,7 +38,7 @@ function gameBoard() {
         getBoard,
         changeCell,
         printBoard,
-        guiRows
+        guiRows,
     }
 };
 
@@ -143,6 +143,7 @@ function gameController() {
     printNewRound(); //initial game messages
 
     return {
+        board,
         playRound,
         switchPlayerTurn
     }
