@@ -29,7 +29,13 @@ function gameBoard() {
 
         for (let i = 0; i < 3; i++) {
             for (let j = 0; j < 3; j++) {
-                guiCells[i][0][j].textContent = board[i][j]
+                if (board[i][j] === 1) {
+                    guiCells[i][j].textContent = 'O'
+                } else if (board[i][j] === 2) {
+                    guiCells[i][j].textContent = 'X'
+                } else {
+                    guiCells[i][j].textContent = ''
+                }
             }
         }
     }
