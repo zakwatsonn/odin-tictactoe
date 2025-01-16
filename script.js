@@ -83,6 +83,15 @@ function gameController() {
         turnBox.textContent = "It's Player " + getActivePlayer().getToken() + "'s turn!"
     }
 
+    //event listeners for buttons
+    for (let i = 0; i < 3; i++) {
+        for (let j = 0; j < 3; j++) {
+            board.guiCells[i][0][j].addEventListener('click', () => {
+                playRound(i, j)
+            })
+        }
+    }
+
     const checkWinner = () => {
         //check rows
         if (board.getBoard().some(row => row[0] === row[1] && row[1] === row[2] && row[0] !== 0)) {
