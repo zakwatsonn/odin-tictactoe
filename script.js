@@ -49,6 +49,7 @@ function gameBoard() {
 };
 
 function player(playerToken) {
+    const activityBox = document.querySelector('.activity-box')
     const getToken = () => playerToken;
 
     const isWinner = () => {
