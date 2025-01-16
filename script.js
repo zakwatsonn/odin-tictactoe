@@ -30,11 +30,11 @@ function gameBoard() {
         for (let i = 0; i < 3; i++) {
             for (let j = 0; j < 3; j++) {
                 if (board[i][j] === 1) {
-                    guiCells[i][j].textContent = 'O'
+                    guiCells[i][0][j].textContent = 'O'
                 } else if (board[i][j] === 2) {
-                    guiCells[i][j].textContent = 'X'
+                    guiCells[i][0][j].textContent = 'X'
                 } else {
-                    guiCells[i][j].textContent = ''
+                    guiCells[i][0][j].textContent = ''
                 }
             }
         }
@@ -44,7 +44,7 @@ function gameBoard() {
         getBoard,
         changeCell,
         printBoard,
-        guiRows,
+        guiCells,
     }
 };
 
@@ -157,3 +157,5 @@ function gameController() {
 
 //for testing purposes
 const game = gameController();
+
+const theboard = gameBoard();
