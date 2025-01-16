@@ -24,7 +24,7 @@
     background-color: rgb(200, 200, 200);
 }
 
-.turn-box, .activity-box {
+.turn-box, .activity-box, .player, .player2 {
     margin: 1rem;
     padding: 0.5rem;
     font-family: sans-serif;
@@ -33,4 +33,8 @@
     border: 0.1rem solid black;
     border-radius: 0.5rem;
     max-width: 18rem;
+}
+
+h3 {
+    display: inline;
 }
